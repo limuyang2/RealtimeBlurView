@@ -108,8 +108,8 @@ open class RealtimeBlurView(context: Context, attrs: AttributeSet?) : View(conte
         var downsampleFactor = mDownsampleFactor
         var radius = mBlurRadius / downsampleFactor
         if (radius > 25) {
-            downsampleFactor = downsampleFactor * radius / 25
             radius = 25f
+            downsampleFactor = downsampleFactor * radius / 25
         }
 
         val width = getWidth()
@@ -120,7 +120,7 @@ open class RealtimeBlurView(context: Context, attrs: AttributeSet?) : View(conte
 
         var dirty = mDirty
 
-        if (mBlurringCanvas == null) {
+        if (mBlurringCanvas == null || mBitmapToBlur == null) {
             dirty = true
             releaseBitmap()
 
